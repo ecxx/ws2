@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>StreamCity</title>
+
+    <style>
+        .button2 {
+
+            margin: 10px;
+
+            display: inline-block;
+            width: max-content;
+            padding: 7px 15px;
+            border: 0px;
+            color: white;
+            background-color: #235da2;
+
+        }
+
+        .button2:hover {
+            background-color: #1a4578;
+        }
+
+        .button2:active {
+            transform: translateY(1px)
+        }
+
+        #tableview {
+            max-width: 75vw;
+            max-height: 65vh;
+            border-collapse: collapse;
+            display: block;
+        }
+
+        #tableview th {
+            background: #DDD
+        }
+
+        #tableview tr:nth-child(even) {
+            background: #DDD
+        }
+
+        #tableview tr:nth-child(odd) {
+            background: #FFF
+        }
+
+        #tableview tr td {
+            width: 15%;
+            padding-right: 20px;
+            text-align: center;
+            padding-left: 20px;
+            border-right: black 1px;
+        }
+
+        .buttonview {
+            text-align: left;
+        }
+
+        #myInput {
+            font-size: 18px;
+        }
+    </style>
+
+</head>
+
+<body id="body">
+
+    <h2>Stream Repository</h2>
+
+    <input type="text" id="myInput" onkeyup="filter(document.getElementById('myInput').value)" placeholder="Search for games..">
+
+    <br>
+
+    <button class='button2' onclick="filter('nfl')">NFL</button>
+    <button class='button2' onclick="filter('mlb')">MLB</button>
+    <button class='button2' onclick="filter('nhl')">NHL</button>
+    <button class='button2' onclick="filter('cfb')">NCAAF</button>
+    <button class='button2' onclick="filter('soccer')">Soccer</button>
+
+    [table]
+
+    <script>
+        function filter(flt) {
+            document.getElementById('myInput').value = flt;
+            flt = flt.toUpperCase();
+            tb = document.getElementById("tableview")
+            tr = tb.getElementsByTagName("tr")
+    
+            for (i = 0; i < tr.length; i++) {
+                txtValue = tr[i].innerHTML
+                if (txtValue.toUpperCase().indexOf(flt) > -1) {
+                    console.log('displayed')
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
