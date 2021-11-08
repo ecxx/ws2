@@ -54,9 +54,7 @@ app.get('/refresh', function (req, res) {
     res.json({"refresh": "refresh in progress"})
 })
 
-app.get('/logo/:logo', function(req, res) {
-    res.sendFile(req.params['logo'], {root: path.join(__dirname, '/logo')})
-})
+app.use(express.static(__dirname+'/public'));
 
 app.get('/watch/:md5', function(req, res) {
     game = refspec[req.params['md5']];
