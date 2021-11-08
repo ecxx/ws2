@@ -22,7 +22,7 @@ module.exports = function gen(games) {
 
         for (i in game['gameday']) {
             buttons += `
-        <button class='button2'><a style="color: white; text-decoration: none;" href='/watch/${game['gameday'][i]}'>${i}</a></button>
+        <a style="color: white; text-decoration: none;" href='/watch/${game['gameday'][i]}'><button class='button2'>${i}</button></a>
             `
         }
         var vc; var logo;
@@ -34,9 +34,11 @@ module.exports = function gen(games) {
             case "National Hockey League":
                 vc="NHL";logo="<img src='/logo/nhl.svg' style='height:30px'></img>";break;
             case "NCAA Football":
-                vc="CFB";logo="<img src='/logo/ncaa.jpg' style='height:30px'></img>";break;
+                vc="CFB";logo="NCAAF";break;
             case "Soccer (League Unknown)":
                 vc="";logo="<img src='/logo/soccer.png' style='height:30px'></img>";break;
+            case "F1":
+                vc="F1";logo="<img src='/logo/f1.png' style='height:30px'></img>";break;
         }
 
         tableOutput += `

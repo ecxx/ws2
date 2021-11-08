@@ -1,3 +1,4 @@
+const md5 = require('md5')
 var espn_fsl = require('./espn_generator.js')
 var fsl = require('./fsl_generator.js')
 
@@ -29,6 +30,12 @@ module.exports = async function generate_all_refspecs () {
         Object.assign(games, game);
     })
 
+    refspec[md5('http://go.freestreams-live1.com/skysportsf1-stream/')] = {
+        'url': 'http://go.freestreams-live1.com/skysportsf1-stream/',
+        'site': 'fsl',
+        'title': 'Sky Sports F1'
+    }
+    
     return {
         games: games,
         refspec: refspec

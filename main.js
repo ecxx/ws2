@@ -3,6 +3,7 @@ const app = express()
 const gen = require('./streamgen/generator.js')
 const genUI = require('./streamSelectionUI/gen.js')
 const freestreams = require('./streams/freestreams.js');
+const path = require('path')
 
 var refspec=0;
 var games=0;
@@ -54,7 +55,7 @@ app.get('/refresh', function (req, res) {
 })
 
 app.get('/logo/:logo', function(req, res) {
-    res.sendFile('./logo/' + req.params['logo'])
+    res.sendFile(req.params['logo'], {root: path.join(__dirname, '/logo')})
 })
 
 app.get('/watch/:md5', function(req, res) {
