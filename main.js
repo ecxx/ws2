@@ -53,6 +53,10 @@ app.get('/refresh', function (req, res) {
     res.json({"refresh": "refresh in progress"})
 })
 
+app.get('/logo/:logo', function(req, res) {
+    res.sendFile('./logo/' + req.params['logo'])
+})
+
 app.get('/watch/:md5', function(req, res) {
     game = refspec[req.params['md5']];
     freestreams(game['url'], game['title']).then((result) => {
