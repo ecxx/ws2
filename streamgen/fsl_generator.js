@@ -3,6 +3,7 @@ const request = require('request')
 var cheerio = require('cheerio')
 var md5 = require('md5');
 var { titleCase } = require("title-case");
+require('datejs')
 
 function get(url) {
     return new Promise((resolve, reject) => {
@@ -41,13 +42,15 @@ module.exports = async function getFSLStreams(category, league, webLink) {
             gameday[titleCase(name.toLowerCase())] = md5(link);
         })
 
+        gamedate = titleCase($('.elementor-heading-title').html().toLowerCase())
+
         var game = {
             "league": league,
-            "week": titleCase($('.elementor-heading-title').html().toLowerCase()),
+            "week": gamedate,
             "event": game_title,
             "gametime": "Status Unknown",
             "status": "Status Unknown",
-            "event_time": game_time,
+            "event_time": new Date(Date.parse(gamedate + " " + new Date().getFullYear() + " " + game_time)).toLocaleString('en-SG'),
             "gameday": gameday
         }
 

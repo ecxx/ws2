@@ -52,7 +52,7 @@ function espn_fsl_nfl(json_body) {
             "event": event['name'],
             "gametime": event['status']['type']['shortDetail'],
             "status": event['status']['type']['state'],
-            "event_time": Date.parse(event['date']),
+            "event_time": new Date(Date.parse(event['date'])).toLocaleString('en-SG'),
             "gameday": {"Home": home_base, "Away": away_base}
         })
 
@@ -103,7 +103,7 @@ function espn_fsl_mlb(json_body) {
             "event": event['name'],
             "gametime": event['status']['type']['shortDetail'],
             "status": event['status']['type']['state'],
-            "event_time": Date.parse(event['date']),
+            "event_time": new Date(Date.parse(event['date'])).toLocaleString('en-SG'),
             "gameday": {"Home": home_base, "Away": away_base}
         })
 
@@ -154,7 +154,7 @@ function espn_fsl_nhl(json_body) {
             "event": event['name'],
             "gametime": event['status']['type']['shortDetail'],
             "status": event['status']['type']['state'],
-            "event_time": Date.parse(event['date']),
+            "event_time": new Date(Date.parse(event['date'])).toLocaleString('en-SG'),
             "gameday": {"Home": home_base, "Away": away_base}
         })
 

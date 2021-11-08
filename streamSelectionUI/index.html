@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>StreamCity</title>
+    <title>Stream Repository</title>
 
     <style>
         .button2 {
@@ -27,11 +27,16 @@
             transform: translateY(1px)
         }
 
+        .button3 {
+            width: 6vw;
+            height: 40px;
+        }
+
         #tableview {
-            max-width: 75vw;
+            max-width: 90vw;
             max-height: 65vh;
             border-collapse: collapse;
-            display: block;
+            display: inline-block;
         }
 
         #tableview th {
@@ -47,15 +52,30 @@
         }
 
         #tableview tr td {
-            width: 15%;
             padding-right: 20px;
             text-align: center;
             padding-left: 20px;
             border-right: black 1px;
         }
 
-        .buttonview {
-            text-align: left;
+        #tableview tr td:nth-child(1) {
+            width: 80px;
+        }
+
+        #tableview tr td:nth-child(2) {
+            width: 10vw;
+        }
+
+        #tableview tr td:nth-child(3) {
+            width: 25vw;
+        }
+
+        #tableview tr td:nth-child(4) {
+            width: 15vw;
+        }
+
+        #tableview tr td:nth-child(5) {
+            width: 25vw;
         }
 
         #myInput {
@@ -73,11 +93,11 @@
 
     <br>
 
-    <button class='button2' onclick="filter('nfl')">NFL</button>
-    <button class='button2' onclick="filter('mlb')">MLB</button>
-    <button class='button2' onclick="filter('nhl')">NHL</button>
-    <button class='button2' onclick="filter('cfb')">NCAAF</button>
-    <button class='button2' onclick="filter('soccer')">Soccer</button>
+    <button class='button2 button3' onclick="filter('nfl')">NFL</button>
+    <button class='button2 button3' onclick="filter('mlb')">MLB</button>
+    <button class='button2 button3' onclick="filter('nhl')">NHL</button>
+    <button class='button2 button3' onclick="filter('cfb')">NCAAF</button>
+    <button class='button2 button3' onclick="filter('soccer')">Soccer</button>
 
     [table]
 

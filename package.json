@@ -12,6 +12,7 @@
   "dependencies": {
     "base-64": "^1.0.0",
     "cheerio": "^1.0.0-rc.10",
+    "datejs": "^1.0.0-rc3",
     "express": "^4.17.1",
     "md5": "^2.3.0",
     "request": "^2.88.2",
