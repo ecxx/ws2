@@ -35,6 +35,8 @@ module.exports = function gen(games) {
                 vc="NHL";logo="<img src='/logo/nhl.svg' style='height:30px'></img>";break;
             case "NCAA Football":
                 vc="NCAAFootball";logo="NCAAF";break;
+            case "National Basketball League":
+                vc="NBA";logo="NBA";break;
             case "Soccer (League Unknown)":
                 vc="";logo="<img src='/logo/soccer.png' style='height:30px'></img>";break;
             case "F1":
