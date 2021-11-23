@@ -6,6 +6,7 @@ const freestreams = require('./streams/freestreams.js');
 const path = require('path')
 
 var refspec=0;
+var registed_refspec=[]
 var games=0;
 
 function refresh() {
@@ -56,8 +57,23 @@ app.get('/refresh', function (req, res) {
 
 app.use(express.static(__dirname+'/public'));
 
+app.get('/register/fsl', function(req, res) {
+
+    registered_refspec[md5(req.query.link)] = {
+        'url': req.query.link,
+        'site': 'fsl',
+        'title': 'Custom Registry'
+    }
+    
+})
+
 app.get('/watch/:md5', function(req, res) {
-    game = refspec[req.params['md5']];
+    refs = JSON.parse(JSON.stringify(registered_refspec))
+    refs = Object.assign(refs, refspec)
+    game = refs[req.params['md5']];
+    if (game==undefined) {
+        res.send("No Such Stream")
+    }
     freestreams(game['url'], game['title']).then((result) => {
         res.send(result);
     }).catch((err) => {
