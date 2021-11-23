@@ -6,7 +6,7 @@ const freestreams = require('./streams/freestreams.js');
 const path = require('path')
 
 var refspec=0;
-var registed_refspec=[]
+var registered_refspec=[]
 var games=0;
 
 function refresh() {
