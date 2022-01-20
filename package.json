@@ -15,7 +15,7 @@
     "liquidjs": "^9.31.0",
     "md5": "^2.3.0",
     "module-alias": "^2.2.2",
-    "nplog": "github:ecxx/nplog",
+    "nplog": "https://github.com/ecxx/nplog/tarball/main",
     "request": "^2.88.2",
     "sha512": "^0.0.1",
     "sqlite3": "^4.2.0",
