@@ -1,22 +1,29 @@
 {
-  "name": "ws2-api",
+  "name": "ws2",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "base-64": "^1.0.0",
     "cheerio": "^1.0.0-rc.10",
     "datejs": "^1.0.0-rc3",
-    "express": "^4.17.1",
+    "express": "^4.17.2",
+    "liquidjs": "^9.31.0",
     "md5": "^2.3.0",
+    "module-alias": "^2.2.2",
+    "nplog": "github:ecxx/nplog",
     "request": "^2.88.2",
+    "sha512": "^0.0.1",
+    "sqlite3": "^4.2.0",
     "title-case": "^3.0.3",
     "utf8": "^3.0.0"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@mod": "src/modules"
   }
 }

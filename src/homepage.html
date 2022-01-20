@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Stream Repository</title>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <style>
         .button2 {
 
@@ -88,7 +90,8 @@
 
     <h2>Stream Repository</h2>
 
-    <input type="text" id="myInput" onkeyup="filter(document.getElementById('myInput').value)" placeholder="Search for games..">
+    <input type="text" id="myInput" onkeyup="filter(document.getElementById('myInput').value)"
+        placeholder="Search for games..">
 
     <br>
 
@@ -98,17 +101,72 @@
     <button class='button2 button3' onclick="filter('nba')">NBA</button>
     <button class='button2 button3' onclick="filter('NCAAFootball')">NCAAF</button>
     <button class='button2 button3' onclick="filter('soccer')">Soccer</button>
-    <a style="color: white; text-decoration: none;" href='/watch/660a7a94d674d6acac6b7d4d91d1b412'><button class='button2 button3'>Watch F1</button></a>
+    <a style="color: white; text-decoration: none;" href='/watch/formula1'><button
+            class='button2 button3'>Watch F1</button></a>
 
-    [table]
+    <div id = "tbl"></div>
 
     <script>
+
+        $.get('/streams').then((data) => {
+
+            var tableOutput = `
+    <table id="tableview">
+    <tbody>
+    `
+            if (!data) return;
+
+            for (i in data) {
+
+                game = data[i]
+
+                buttons = ''
+
+                for (i in game['gameday']) {
+                    buttons += `
+<a style="color: white; text-decoration: none;" href='/watch/${game['gameday'][i]}'><button class='button2'>${i}</button></a>
+    `
+                }
+                var vc; var logo;
+                switch (game['league']) {
+                    case "National Football League":
+                        vc = "NFL"; logo = "NFL"; break;
+                    case "Major League Baseball":
+                        vc = "MLB"; logo = "MLB"; break;
+                    case "National Hockey League":
+                        vc = "NHL"; logo = "NHL"; break;
+                    case "NCAA Football":
+                        vc = "NCAAFootball"; logo = "NCAAF"; break;
+                    case "National Basketball Association":
+                        vc = "NBA"; logo = "NBA"; break;
+                    case "Soccer (League Unknown)":
+                        vc = ""; logo = "Soccer"; break;
+                }
+
+                tableOutput += `
+<tr>
+<td class=${vc}>${logo}</td>
+<td>${game['event_time']}</td>
+<td>${game['event']}</td>
+<td>${game['gametime']}</td>
+<td style='text-align: left'>${buttons}</td>
+</tr>
+`
+
+            }
+
+            tableOutput += "</tbody></table>"
+
+            document.getElementById('tbl').innerHTML = tableOutput;
+
+        })
+
         function filter(flt) {
             document.getElementById('myInput').value = flt;
             flt = flt.toUpperCase();
             tb = document.getElementById("tableview")
             tr = tb.getElementsByTagName("tr")
-    
+
             for (i = 0; i < tr.length; i++) {
                 txtValue = tr[i].innerHTML
                 if (txtValue.toUpperCase().indexOf(flt) > -1) {
