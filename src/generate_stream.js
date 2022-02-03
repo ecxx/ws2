@@ -47,9 +47,7 @@ module.exports = async function update() {
     temp_streams = [];
     hash_refs = {};
 
-    items.db.run("DELETE FROM streams;");
-
-    items.db.run(`INSERT INTO streams ( refspec, link, title, exturl ) VALUES ( "formula1", "fsl:http://rp.freestreams-live1.com/skysportsf1-stream/", "Sky Sports F1", "http://rp.freestreams-live1.com/skysportsf1-stream/" )`)
+    items.db.run("DELETE FROM streams WHERE permanent = 0;");
 
     await espn_parse("https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard", "National Hockey League");
     await espn_parse("https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard", "National Football League");
@@ -148,7 +146,7 @@ async function fsl_parse(league, webLink) {
             var name = gamedata(element).text()
             gameday[titleCase(name.toLowerCase())] = encoded;
 
-            items.db.run(`INSERT INTO streams ( refspec, link, title, exturl ) VALUES ( "${encoded}", "fsl:${link}", "${game_title}", "${link}" )`)
+            items.db.run(`INSERT INTO streams ( refspec, link, title, exturl ) VALUES ( "${encoded}", "fsl|${link}", "${game_title}", "${link}" )`)
         })
 
         gamedate = titleCase($('.elementor-heading-title').html().toLowerCase())

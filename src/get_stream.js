@@ -38,11 +38,9 @@ function freestreams(weblink) {
                 if (found) {
                     return;
                 }
-                if ($(element).attr('loading') == "lazy") {
-                    var url = $(element).attr('src');
-                    resolve(url);
-                    found=true;
-                }
+                var url = $(element).attr('src');
+                resolve(url);
+                found=true;
             });
             if (!found) {
                 resolve("No Stream Found");
